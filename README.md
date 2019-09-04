@@ -57,3 +57,13 @@ Other examples:
 ---------------
 You can make a quick command to search using an alias, for example in zsh you can add this to your .zshrc:
 > alias lgen="python -c 'import sys;import libgenapi;l=libgenapi.Libgenapi(\"http://[INSERTDOMAINHERE]/\");print(l.search(sys.argv[1]))'"
+
+You can also save this as an executable file and use it from any shell:
+```py
+#!/usr/bin/env python3
+import sys, json, os
+import libgenapi
+l = libgenapi.Libgenapi(["http://someLibgenAddress/"])
+query = " ".join(sys.argv[1:])
+print(json.dumps(l.search(query)))
+```
